@@ -45,16 +45,18 @@ func main() {
 		}
 
 		event := Event{
-			Name: "uah-to-usd-ratio",
+			Name: "uah_to_usd",
 			Params: map[string]interface{}{
-				"rate":      ratio.Rate,
-				"timestamp": timestamp.Format(time.DateTime),
+				"rate":                 ratio.Rate,
+				"session_id":           "123",
+				"engagement_time_msec": "100",
+				"timestamp":            timestamp.Format(time.DateTime),
 			},
 		}
 
 		logger.Info("pushed event", "event", event)
 
-		if err = googleAnalyticsAPIClient.pushEvent(measurementID, "golang-worker-client", []Event{event}); err != nil {
+		if err = googleAnalyticsAPIClient.pushEvent(measurementID, "785147521.1700385219", []Event{event}); err != nil {
 			return err
 		}
 
